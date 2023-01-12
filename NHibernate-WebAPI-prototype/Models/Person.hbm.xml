@@ -1,0 +1,25 @@
+﻿<?xml version = "1.0" encoding = "utf-8" ?>
+
+<hibernate-mapping xmlns = "urn:nhibernate-mapping-2.2"
+   assembly = "NHibernate-WebAPI-prototype" namespace = "NHibernate_WebAPI_prototype.Models">
+
+	<class name= "Person" table = "person"  >
+		<id name = "Id" column = "id" type = "int" >
+			<generator class= "identity" />
+		</id>
+
+		<property name = "FirstName" column = "firstname" type = "String" length = "50" />
+
+		<property name = "LastName" column = "lastname" type = "String" length = "50" />
+
+		<property name = "Place" column = "place" type = "String" length = "50" />
+		
+		<property name = "Age" column = "age" type = "int"/>
+		
+
+		<bag name="Insurances" table="person_has_insurance">
+			<key column="person_id"></key>
+			<many-to-many class="Insurance" column="insurance_id"/>
+		</bag>
+	</class>
+</hibernate-mapping >
